@@ -78,6 +78,18 @@ void Game::Render() const
 		bricks[i].Draw();
 	}
 
+	if (ball.x_velocity == 0)
+	{
+		Console::SetCursorPosition(25, 15);
+
+		if (bricks.empty()) {
+			std::cout << "VICTORY! Press 'R' to Reset";
+		}
+		else {
+			std::cout << "GAME OVER! Press 'R' to Reset";
+		}
+	}
+
 	Console::Lock(false);
 }
 
@@ -106,7 +118,7 @@ void Game::CheckCollision()
 
 		ball.x_velocity = 0;
 		ball.y_velocity = 0;
-		std::cout << "VICTORY! Press 'R' to Reset";
+	
 	
 
 	}
@@ -121,7 +133,6 @@ void Game::CheckCollision()
 	{
 		ball.x_velocity = 0;
 		ball.y_velocity = 0;
-		std::cout << "GAME OVER! Press 'R' to Reset";
 
 	}
 }
